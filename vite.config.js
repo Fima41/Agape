@@ -7,16 +7,28 @@ export default defineConfig({
     sourcemap: false,
     minify: 'terser',
     target: 'esnext',
-    cssCodeSplit: true,
     rollupOptions: {
-      input: {
-        main: './index.html'
-      },
       output: {
         assetFileNames: 'assets/[name][extname]',
         chunkFileNames: 'assets/[name].js',
-        entryFileNames: 'assets/[name].js'
+        entryFileNames: 'assets/[name].js',
+      }
+    },
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
       }
     }
+  },
+  server: {
+    port: 3000,
+    strictPort: true,
+    host: true
+  },
+  preview: {
+    port: 3000,
+    strictPort: true,
+    host: true
   }
 })
