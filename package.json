@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "build": "npx vite build && npx tailwindcss -i ./css/tailwind.css -o ./css/tailwind-build.css --minify",
+    "build": "node ./node_modules/vite/bin/vite.js build",
     "preview": "vite preview",
     "start:tailwind": "cross-env NODE_ENV=development tailwindcss --postcss -i ./css/tailwind.css -o ./css/tailwind-runtime.css -w",
     "build:tailwind": "cross-env NODE_ENV=production tailwindcss --postcss -i ./css/tailwind.css -o ./css/tailwind-build.css --minify"
