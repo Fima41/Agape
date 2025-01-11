@@ -4,7 +4,11 @@
     {
       "src": "package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "dist" }
+      "config": { 
+        "distDir": "dist",
+        "installCommand": "npm install",
+        "nodeVersion": "18.x"
+      }
     }
   ],
   "routes": [
