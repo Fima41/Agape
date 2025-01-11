@@ -5,30 +5,22 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: false,
-    minify: 'terser',
-    target: 'esnext',
+    cssMinify: true,
     rollupOptions: {
+      input: {
+        main: './index.html'
+      },
       output: {
-        assetFileNames: 'assets/[name][extname]',
-        chunkFileNames: 'assets/[name].js',
-        entryFileNames: 'assets/[name].js',
-      }
+        assetFileNames: (assetInfo) => {
+          let extType = assetInfo.name.split('.')[1];
+          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
+            extType = 'img';
+          }
+          return `assets/${extType}/[name][extname]`;
+        },
+        chunkFileNames: 'assets/js/[name].js',
+        entryFileNames: 'assets/js/[name].js',
+      },
     },
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true
-      }
-    }
   },
-  server: {
-    port: 3000,
-    strictPort: true,
-    host: true
-  },
-  preview: {
-    port: 3000,
-    strictPort: true,
-    host: true
-  }
 })
