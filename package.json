@@ -4,23 +4,17 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && npm run build:tailwind",
+    "build": "node ./node_modules/vite/bin/vite.js build",
     "preview": "vite preview",
     "start:tailwind": "cross-env NODE_ENV=development tailwindcss --postcss -i ./css/tailwind.css -o ./css/tailwind-runtime.css -w",
-    "build:tailwind": "cross-env NODE_ENV=production tailwindcss --postcss -i ./css/tailwind.css -o ./css/tailwind-build.css --minify",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:tailwind": "cross-env NODE_ENV=production tailwindcss --postcss -i ./css/tailwind.css -o ./css/tailwind-build.css --minify"
   },
-  "keywords": [
-    "landing",
-    "pages",
-    "motion",
-    "design",
-    "websites"
-  ],
-  "author": "Paul",
-  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
     "autoprefixer": "^10.4.20",
+    "cross-env": "^7.0.3",
     "gsap": "^3.12.5",
     "postcss": "^8.4.33",
     "postcss-simple-vars": "^7.0.1",
@@ -30,7 +24,6 @@
   },
   "devDependencies": {
     "chart.js": "^4.4.2",
-    "cross-env": "^7.0.3",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.5"
   }
